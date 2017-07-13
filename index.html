@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Практическое задание</title>
+<style>
+		.button {
+			background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+			background-image: linear-gradient(top, #f4f1ee, #fff);
+			border-radius: 50%;
+			float:left;
+			height: 20px;
+			margin: 0 10px 0px 10px;
+			position: relative;
+			width: 20px;			
+			border: 1px rgba(128,128,128,0.1) solid;
+			cursor: pointer;
+		}
+		
+		.tick .button {
+			background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+			background-image: linear-gradient(top, #f4f1ee, #fff);
+			border-radius: 50%;
+			float:left;
+			height: 20px;
+			margin: 0 10px 0px 10px;
+			position: relative;
+			width: 20px;			
+			border: 1px rgba(128,128,128,1) solid;
+			cursor: pointer;
+		}
+
+		.button:after {
+		    color:#e9e6e4;
+			content: "";
+			display: block;
+			font-size: 15px;
+			height: 15px;
+
+			position: absolute;
+			width: 15px;
+			
+			left:4px;
+			top:0px;
+			
+		}
+
+		.tick .button:after {
+			color:#83d244;
+			content: "✔";
+		}
+		
+		li {
+		   list-style: none;
+		   padding: 0px;
+		   margin: 10px;
+		}
+		
+		ul {
+		   padding: 0px;
+		   margin: 0px;
+		}
+		
+		.title {
+		   height: 20px;
+		   display: table-cell;
+		   vertical-align: middle; 		
+		}
+
+        .tick .title {
+		   height: 20px;
+		   display: table-cell;
+		   vertical-align: middle; 	
+           color:rgba(128, 128, 128, 0.6);
+           text-decoration: line-through;
+
+		}
+
+        .button:hover{
+		   border: 1px rgba(128,128,128,1) solid;
+		}		
+</style>
+</head>
+<body>
+<script>
+   
+  'use strict';
+
+function createElementUl(url) {
+
+  let map = new Map();
+  let ul = document.createElement('ul');
+
+
+
+  function createElementLi(data){
+    
+	for(let value of data) {
+	     
+		 let li = document.createElement('li');
+	      
+         let divbutton = document.createElement('div');
+         divbutton.classList.add("button");
+         li.append(divbutton);
+	      
+         let divvalue = document.createElement('div');
+         divvalue.classList.add("title");
+         divvalue.innerHTML = value.title;
+         li.append(divvalue);
+		  
+         if(value.completed) {
+         li.classList.add("tick");
+         }
+
+         ul.append(li); 
+		 
+		 map.set(divbutton, value);
+	    }
+  
+    }
+
+
+  function urlitem(url) {
+    fetch(url)  
+    .then(  
+      function(response) {  
+        if (response.status !== 200) {  
+           console.log('Looks like there was a problem. Status Code: ' +  
+           response.status);  
+           return;  
+        }
+
+        response.json().then(function(data) {  
+        
+		createElementLi(data);
+		
+        });  
+    }  
+   )  
+   .catch(function(err) {  
+      console.log('Fetch Error :-S', err);  
+    });
+
+  }
+
+
+  function handler(event){
+
+    let target = event.target;
+
+  
+    while (target != ul) {
+    
+	  if (target.classList.contains("button")) {
+        target.parentElement.classList.toggle("tick");
+        map.get(target).completed = !map.get(target).completed;
+        console.log(`ФЛАГ: ${map.get(target).completed}; id: ${map.get(target).id}`);      
+        return;
+        }
+    
+	target = target.parentNode;
+    }
+ 
+  }; 
+
+
+  ul.addEventListener("click", handler);
+  urlitem(url);
+  document.body.append(ul);
+
+}
+ 
+createElementUl('https://jsonplaceholder.typicode.com/todos'); 
+
+</script>
+</body>
+</html> 
