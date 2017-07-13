@@ -5,30 +5,20 @@
     <title>Практическое задание</title>
 <style>
 		.button {
-			background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
-			background-image: linear-gradient(top, #f4f1ee, #fff);
 			border-radius: 50%;
 			float:left;
 			height: 20px;
-			margin: 0 10px 0px 10px;
+			margin: 0 5px 0px 2px;
 			position: relative;
 			width: 20px;			
 			border: 1px rgba(128,128,128,0.1) solid;
-			cursor: pointer;
+			cursor: pointer;		
 		}
 		
 		.tick .button {
-			background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
-			background-image: linear-gradient(top, #f4f1ee, #fff);
-			border-radius: 50%;
-			float:left;
-			height: 20px;
-			margin: 0 10px 0px 10px;
-			position: relative;
-			width: 20px;			
-			border: 1px rgba(128,128,128,1) solid;
-			cursor: pointer;
+     		border: 1px rgba(128,128,128,1) solid;					
 		}
+		
 
 		.button:after {
 		    color:#e9e6e4;
@@ -36,10 +26,8 @@
 			display: block;
 			font-size: 15px;
 			height: 15px;
-
 			position: absolute;
-			width: 15px;
-			
+			width: 15px;			
 			left:4px;
 			top:0px;
 			
@@ -53,24 +41,28 @@
 		li {
 		   list-style: none;
 		   padding: 0px;
-		   margin: 10px;
+		   margin: 0px;
+		   height: 22px;
+		   border: 1px rgba(128, 128, 128, 0.6) solid;
+		   
 		}
 		
 		ul {
 		   padding: 0px;
 		   margin: 0px;
+		   box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		   
 		}
 		
 		.title {
-		   height: 20px;
+		   height: 22px;
 		   display: table-cell;
-		   vertical-align: middle; 		
+		   vertical-align: middle; 
+           margin-top: auto;
+           margin-bottom: auto;		   
 		}
 
-        .tick .title {
-		   height: 20px;
-		   display: table-cell;
-		   vertical-align: middle; 	
+        .tick .title { 	
            color:rgba(128, 128, 128, 0.6);
            text-decoration: line-through;
 
@@ -78,6 +70,10 @@
 
         .button:hover{
 		   border: 1px rgba(128,128,128,1) solid;
+		}
+
+        li:hover{
+		  border: 2px rgba(128,128,128,1) solid;
 		}		
 </style>
 </head>
