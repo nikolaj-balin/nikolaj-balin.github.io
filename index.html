@@ -6,13 +6,13 @@
 <style>
 		.button {
 			border-radius: 50%;
-			float:left;
 			height: 20px;
-			margin: 0 5px 0px 2px;
+			margin: 0 10px 0px 10px;
 			position: relative;
 			width: 20px;			
 			border: 1px rgba(128,128,128,0.1) solid;
-			cursor: pointer;		
+			cursor: pointer;
+            display: inline-block;		
 		}
 		
 		.tick .button {
@@ -25,9 +25,9 @@
 			content: "";
 			display: block;
 			font-size: 15px;
-			height: 15px;
+			height: 17px;
 			position: absolute;
-			width: 15px;			
+			width: 17px;			
 			left:4px;
 			top:0px;
 			
@@ -39,10 +39,14 @@
 		}
 		
 		li {
+		   display: flex;
+		   flex-direction: row;
+		   flex-wrap: nowrap;
+		   align-items: center;
 		   list-style: none;
 		   padding: 0px;
 		   margin: 0px;
-		   height: 22px;
+		   height: 30px;
 		   border: 1px rgba(128, 128, 128, 0.6) solid;
 		   
 		}
@@ -58,8 +62,8 @@
 		   height: 22px;
 		   display: table-cell;
 		   vertical-align: middle; 
-           margin-top: auto;
-           margin-bottom: auto;		   
+          
+           display: inline-block;		   
 		}
 
         .tick .title { 	
@@ -72,8 +76,9 @@
 		   border: 1px rgba(128,128,128,1) solid;
 		}
 
-        li:hover{
-		  border: 2px rgba(128,128,128,1) solid;
+        li:hover {
+		  
+		  box-shadow: 0 0 10px rgba(131, 210, 68, 1);
 		}		
 </style>
 </head>
